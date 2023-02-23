@@ -10,7 +10,6 @@ if cmp(a, b) returns  1, then a > b;
 if cmp(a, b) returns  0, then a == b.
 '''
 
-import random
 
 def cmp_standard(a, b):
     '''
@@ -79,7 +78,7 @@ def _merged(xs, ys, cmp=cmp_standard):
     '''
     i, j = 0, 0
     merged = []
-    
+
     while i < len(xs) and j < len(ys):
         if cmp(xs[i], ys[j]) == -1:
             merged.append(xs[i])
@@ -87,11 +86,11 @@ def _merged(xs, ys, cmp=cmp_standard):
         else:
             merged.append(ys[j])
             j += 1
-            
+
     # Add remaining elements from xs or ys to the merged list
     merged.extend(xs[i:])
     merged.extend(ys[j:])
-    
+
     return merged
 
 
@@ -120,14 +119,14 @@ def merge_sorted(xs, cmp=cmp_standard):
         left = xs[:mid]
         right = xs[mid:]
         return _merged(merge_sorted(left, cmp=cmp), merge_sorted(right, cmp=cmp), cmp=cmp)
-   
+
 
 def quick_sorted(xs, cmp=cmp_standard):
     '''
     Quicksort is like mergesort,
     but it uses a different strategy to split the list.
     Instead of splitting the list down the middle,
-    a "pivot" value is randomly selected, 
+    a "pivot" value is randomly selected,
     and the list is split into a "less than" sublist and a "greater than" sublist.
 
     The pseudocode is:
